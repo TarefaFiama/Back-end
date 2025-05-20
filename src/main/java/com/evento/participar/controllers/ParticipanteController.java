@@ -47,10 +47,12 @@ public class ParticipanteController {
         }
     }
     
+    //lista os eventos que o participante esta 
     @GetMapping("/{id}/eventos")
     public Set<Evento> eventos(@PathVariable Long id) {
         return service.listarEventosInscritos(id);
     }
+    
 
     // Trata exceções de regra de negócio (como falta de vagas ou inscrição repetida)
     @ExceptionHandler(IllegalStateException.class)
