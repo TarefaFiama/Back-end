@@ -31,6 +31,33 @@ A aplicação foi desenvolvida com o objetivo de facilitar o processo de **organ
 - As funcionalidades foram implementadas de forma colaborativa, com controle de versionamento via Git.
 - Cada integrante foi responsável por uma parte específica do projeto, com commits frequentes e uso de branches quando necessário.
 
+## 📁 Estrutura de Pastas do Projeto
+
+- src
+- └── main
+-    ├── java
+-    │   └── com
+-    │       └── evento
+-    │           └── participar
+-    │               ├── controllers
+-    │               │   ├── EventoController.java
+-    │               │   ├── ParticipanteController.java
+-    │               │   └── dtos
+-    │               │       ├── EventoDTO.java
+-    │               │       └── ParticipanteDTO.java
+-    │               ├── entities
+-    │               │   ├── Evento.java
+-    │               │   └── Participante.java
+-    │               ├── repositories
+-    │               │   ├── EventoRepository.java
+-    │               │   └── ParticipanteRepository.java
+-    │               ├── services
+-    │               │   ├── EventoService.java
+-    │               │   └── ParticipanteService.java
+-    │               └── ParticiparApplication.java
+-    └── resources
+-        └── application.properties
+
 ## 👥 Divisão de Tarefas da Equipe
 
 | Pessoa   | Responsabilidades |
