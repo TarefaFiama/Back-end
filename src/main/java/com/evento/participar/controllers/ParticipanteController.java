@@ -1,14 +1,22 @@
 package com.evento.participar.controllers;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.evento.participar.dtos.EventoDTO;
+import com.evento.participar.dtos.ParticipanteDTO;
+import com.evento.participar.entities.Participante;
+import com.evento.participar.services.ParticipanteService;
 
 @RestController
 @RequestMapping("/participantes")
@@ -18,7 +26,7 @@ public class ParticipanteController {
     private ParticipanteService service;
 
     @PostMapping
-    public Participante cadastrar(@RequestBody Participante participante) {
+    public ParticipanteDTO cadastrar(@RequestBody ParticipanteDTO participante) {
         return service.cadastrar(participante);
     }
 
@@ -41,6 +49,12 @@ public class ParticipanteController {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
+    
+    //lista os eventos que o participante esta
+    @GetMapping("/{id}/eventos")
+    public ResponseEntity<?> listarEventos(@PathVariable Long id) {
+		return service.listarEventosInscritos(id);
+	}
 
     // Trata exceções de regra de negócio (como falta de vagas ou inscrição repetida)
     @ExceptionHandler(IllegalStateException.class)
